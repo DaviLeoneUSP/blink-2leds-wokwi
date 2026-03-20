@@ -1,7 +1,8 @@
 /*
   Blink
 
-  Turns an LED on for one second, then off for one second, repeatedly.
+  Turns green LED on for five seconds, then turn off, turn yellow led on for one and a half seconds, then turn off,
+  turn red LED on for eigth seconds then turn off, repeatedly.
 
   Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
   it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to
@@ -23,18 +24,25 @@
 */
 
 // the setup function runs once when you press reset or power the board
-void setup() {
-  // initialize digital pin LED_BUILTIN as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(8, OUTPUT);
-}
 
-// the loop function runs over and over again forever
-void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  digitalWrite(8, LOW);
-  delay(1000);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  digitalWrite(8, HIGH);
-  delay(1000);                       // wait for a second
-}
+  int amarelo = 7;
+  int verde = 8;
+  int vermelho = 13;
+
+  void setup () {
+    pinMode(amarelo, OUTPUT);
+    pinMode(verde, OUTPUT);
+    pinMode(vermelho, OUTPUT);
+    Serial.begin(9600);
+  }
+  void loop() {
+    digitalWrite(verde, HIGH);
+    delay(5000);
+    digitalWrite(verde, LOW);
+    digitalWrite(amarelo, HIGH);
+    delay(1500);
+    digitalWrite(amarelo, LOW);
+    digitalWrite(vermelho,HIGH);
+    delay(8000);
+    digitalWrite(vermelho, LOW);
+  }
